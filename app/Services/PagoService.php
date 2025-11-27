@@ -34,8 +34,10 @@ class PagoService
         return DB::transaction(function () use ($data) {
             $venta = Venta::with('cliente', 'detalleVentas.receta')->find($data['venta_id']);
 
-            // Si es pago QR, el estado debe ser pendiente
-            $estado = (int)$data['metodopago'] === 5 ? 0 : (int)($data['estado'] ?? 0);
+            $esQR = (int)$data['metodopago'] === 5;
+
+            // Los pagos manuales se registran como pagados; los QR quedan pendientes hasta confirmación
+            $estado = $esQR ? 0 : 1;
 
             // Crear pago
             $pago = Pago::create([
@@ -47,12 +49,14 @@ class PagoService
             ]);
 
             // Si el método de pago es QR (5), generar código QR
-            if ((int)$data['metodopago'] === 5) {
+            if ($esQR) {
                 $this->generateQRForPayment($pago, $venta);
             }
 
             // Actualizar estado de venta
-            $totalPagado = $venta->pagos()->sum('monto');
+            $totalPagado = $venta->pagos()
+                ->where('estado', 1)
+                ->sum('monto');
 
             if ($totalPagado >= $venta->total) {
                 $venta->update(['estado' => 1]);
