@@ -19,4 +19,6 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    base: '/inf513/grupo12sc/proyecto2/tecnoweb_grupo12/public/build/',
 });
+
