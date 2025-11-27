@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "ccb976ba-528a-4d6a-b343-deeec104c840",
+		"name": "MasterQR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29992119"
+	},
+	"item": [
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "tcTokenService",
+						"value": "51247fae280c20410824977b0781453df59fad5b23bf2a0d14e884482f91e09078dbe5966e0b970ba696ec4caf9aa5661802935f86717c481f1670e63f35d504a62547a9de71bfc76be2c2ae01039ebcb0f74a96f0f1f56542c8b51ef7a2a6da9ea16f23e52ecc4485b69640297a5ec6a701498d2f0e1b4e7f4b7803bf5c2eba",
+						"type": "text"
+					},
+					{
+						"key": "tcTokenSecret",
+						"value": "0C351C6679844041AA31AF9C",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://masterqr.pagofacil.com.bo/api/services/v2/login",
+					"protocol": "https",
+					"host": [
+						"masterqr",
+						"pagofacil",
+						"com",
+						"bo"
+					],
+					"path": [
+						"api",
+						"services",
+						"v2",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/list-enabled-services",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbWFzdGVycXIucGFnb2ZhY2lsLmNvbS5iby9hcGkvc2VydmljZXMvdjIvbG9naW4iLCJpYXQiOjE3NjExODA2ODcsImV4cCI6MTc2MTE5MTk5OSwibmJmIjoxNzYxMTgwNjg3LCJqdGkiOiJxZ1N3eXltbThXM0NtcjRpIiwic3ViIjoiNDciLCJwcnYiOiJlZTMwYTE1M2VhZTA0ZTczZjc5NDA2MzlkYTYwMzRiNzEzOTQ5YmE1In0.P1tVpNmEztFIA4ZOY2eOx8LnSktvzYNzFdpiKcrwCNg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://masterqr.pagofacil.com.bo/api/services/v2/list-enabled-services",
+					"protocol": "https",
+					"host": [
+						"masterqr",
+						"pagofacil",
+						"com",
+						"bo"
+					],
+					"path": [
+						"api",
+						"services",
+						"v2",
+						"list-enabled-services"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/generate-qr",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbWFzdGVycXIucGFnb2ZhY2lsLmNvbS5iby9hcGkvc2VydmljZXMvdjIvbG9naW4iLCJpYXQiOjE3NjExODA2ODcsImV4cCI6MTc2MTE5MTk5OSwibmJmIjoxNzYxMTgwNjg3LCJqdGkiOiJxZ1N3eXltbThXM0NtcjRpIiwic3ViIjoiNDciLCJwcnYiOiJlZTMwYTE1M2VhZTA0ZTczZjc5NDA2MzlkYTYwMzRiNzEzOTQ5YmE1In0.P1tVpNmEztFIA4ZOY2eOx8LnSktvzYNzFdpiKcrwCNg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"paymentMethod\": 4,\r\n    \"clientName\": \"Jhon Doe\",\r\n    \"documentType\": 1,\r\n    \"documentId\": \"123456\",\r\n    \"phoneNumber\": \"75540850\",\r\n    \"email\": \"mario.herbas@pagofacil.com.bo\",\r\n    \"paymentNumber\": \"123Prueba1\",\r\n    \"amount\": 0.1,\r\n    \"currency\": 2,\r\n    \"clientCode\": \"11001\",\r\n    \"callbackUrl\": \"https://tu-dominio.com/callback\",\r\n    \"orderDetail\": [\r\n        {\r\n            \"serial\": 1,\r\n            \"product\": \"Detalle_Item\",\r\n            \"quantity\": 1,\r\n            \"price\": 0.1,\r\n            \"discount\": 0,\r\n            \"total\": 0.1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://masterqr.pagofacil.com.bo/api/services/v2/generate-qr",
+					"protocol": "https",
+					"host": [
+						"masterqr",
+						"pagofacil",
+						"com",
+						"bo"
+					],
+					"path": [
+						"api",
+						"services",
+						"v2",
+						"generate-qr"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/query-transaction",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
